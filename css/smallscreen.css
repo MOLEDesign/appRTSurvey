@@ -1,0 +1,13 @@
+#questionaire {
+    width: 100%;
+    min-height: 130px !important;
+}
+
+#frontimg {
+    display:none;
+}
+
+#welcomemessage {
+    font-size:12px;
+}
+

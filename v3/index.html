@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="myQuestions">
+    <link rel="apple-touch-icon" href="img/apple_touch_icon.png" />
+    <title>myQuestions</title>
+
+    <link href="../css/codiqa.ext.min.css" rel="stylesheet">
+    <link href="../css/jquery.mobile.theme-1.3.1.min.css" rel="stylesheet">
+    <link href="../css/robot.css" rel="stylesheet">
+    <link href="../css/jquery.mobile.structure-1.3.1.min.css" rel="stylesheet">
+
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/jquery.mobile-1.3.1.min.js"></script>
+    <script src="../js/codiqa.ext.min.js"></script>
+
+    <!-- Call mustache.js -->
+    <script src="../js/mustache.js"></script>
+
+    <!-- Local storage -->
+    <script src="../js/storage.js"></script>
+
+    <!-- Add to home scripts -->
+    <script src="../js/add2home.js"></script>
+    <link href="../css/add2home.css" rel="stylesheet">
+
+    <!-- Styling for smaller screens -->
+    <link type="text/css" href="../css/smallscreen.css" rel="stylesheet" media="all and (max-height: 480px)" />
+
+
+    <!-- Fill placeholders for personal config -->
+    <script>
+        $(window).load(function () {
+            $("#fullname").attr("placeholder", db_user.getItem('fullname'));
+            $("#mobilenumber").attr("placeholder", db_user.getItem('mobilenumber'));
+            $("#email").attr("placeholder", db_user.getItem('email'));
+            $("#location").attr("placeholder", db_user.getItem('location'));
+            $("#server").attr("placeholder", db_server.getItem('server'));
+        });
+    </script>
+
+</head>
+<body>
+<div data-role="page" data-control-title="Home" data-theme="d" id="home_page">
+    <div data-role="panel" id="panel1" data-position="left" data-display="reveal"
+         data-theme="a">
+        <ul data-role="listview" data-divider-theme="h" data-inset="false">
+            <li data-role="list-divider" role="heading">
+                Control
+            </li>
+            <li data-theme="a">
+                <a href="#help_page" data-transition="none">
+                    Help
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#config_page" data-transition="none">
+                    Config
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div data-theme="" data-role="header" data-position="fixed">
+        <a data-role="button" data-theme="a" href="javascript:window.location.reload()" data-icon="refresh"
+           data-iconpos="notext" class="ui-btn-right">
+        </a>
+        <a data-role="button" href="#panel1" data-icon="bars" data-iconpos="notext"
+           class="ui-btn-left">
+        </a>
+
+        <h3>
+            myQuestions
+        </h3>
+    </div>
+    <div data-role="content" style="padding: 2%">
+        <div data-controltype="textblock">
+            <p>
+                Welcome to myQuestions. Please select a questionaire below.
+            </p>
+        </div>
+        <div style=" text-align:center" data-controltype="image" id="frontpageimg">
+            <img style="width: 129px; height: 129px" src="img/apple-touch-icon.png">
+        </div>
+        <form id="questionsettings" action="" method="POST">
+            <div id="home_page_content">
+            </div>
+        </form>
+    </div>
+</div>
+<div data-role="page" data-control-title="Help" data-theme="d" id="help_page">
+    <div data-role="panel" id="panel2" data-position="left" data-display="reveal"
+         data-theme="a">
+        <ul data-role="listview" data-divider-theme="h" data-inset="false">
+            <li data-role="list-divider" role="heading">
+                Controls
+            </li>
+            <li data-theme="a">
+                <a href="#home_page" data-transition="none">
+                    Home
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#config_page" data-transition="none">
+                    Config
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <a data-role="button" href="#home_page" data-icon="home" data-iconpos="notext"
+           class="ui-btn-right">
+        </a>
+        <a data-role="button" href="#panel2" data-icon="bars" data-iconpos="notext"
+           class="ui-btn-left">
+        </a>
+
+        <h3>
+            Help
+        </h3>
+    </div>
+    <div data-role="content" style="padding: 2%">
+        <div data-role="collapsible-set">
+            <div data-role="collapsible" data-collapsed="false">
+                <h3>
+                    About
+                </h3>
+
+                <div data-controltype="textblock">
+                    <h2 data-mce-style="text-align: left;" style="text-align: left;">
+                        myQuestions v2.1.0
+                        <br>
+                        GW Edition
+                    </h2>
+
+                    <p style="text-align: left;" data-mce-style="text-align: left;">
+                        (c) 2013+ FGW
+                    </p>
+
+                    <p style="text-align: left;" data-mce-style="text-align: left;">
+                        Design and Coding by Morgan Leecy
+                    </p>
+                </div>
+            </div>
+            <div data-role="collapsible">
+                <h3>
+                    Configuration
+                </h3>
+
+                <div data-controltype="textblock">
+                    <p>
+                        <b>
+                            The config screen allows you to store your personal details for submission
+                            with questionaires and 'ask a question'. If a question or questionaire
+                            is marked as annonymous these details will NOT be sent.
+                        </b>
+                    </p>
+
+                    <p>
+                        <b>
+                            The posting server is information supplied by your IT deptartment. In
+                            most instances this will be pre-filled
+                        </b>
+                    </p>
+
+                    <p>
+                        <b>
+                            Please note that full resets or majr firmware upgrades of your smartphone
+                            may clear this information.
+                        </b>
+                    </p>
+                </div>
+            </div>
+            <div data-role="collapsible">
+                <h3>
+                    Questionaires
+                </h3>
+
+                <div data-controltype="textblock">
+                    <p>
+                        Questionaires info
+                    </p>
+                </div>
+            </div>
+            <div data-role="collapsible">
+                <h3>
+                    Asking questions
+                </h3>
+
+                <div data-controltype="textblock">
+                    <p>
+                        The asking a question section allows you to pose questions to the event
+                        organiser.
+                    </p>
+
+                    <p>
+                        In many situations it will likely be just a single field in which to pose
+                        your question, however in depending on how the question has been configured
+                        you may be allowed to specifiy certain variables such as, butnot limited
+                        to
+                    </p>
+                    <ul>
+                        <li>
+                            The method in which you would prefer the question answered
+                        </li>
+                        <li>
+                            If you want a private answer
+                        </li>
+                    </ul>
+                    <p>
+                        Once you have posed your question and sepcified these variables, click
+                        the 'Ask your question' button
+                    </p>
+                </div>
+            </div>
+            <div data-role="collapsible">
+                <h3>
+                    Anonymity
+                </h3>
+
+                <div data-controltype="textblock">
+                    <p>
+                        <b>
+                            When a questionaire is marked as anonymous, your information will NOT
+                            be sent.
+                        </b>
+                    </p>
+
+                    <p>
+                        <b>
+                            A unique ID from your phone will be sent so we can make sure that there
+                            are no multiple submissions, but this can in no way be traced back to the
+                            phone submitting the info.
+                        </b>
+                    </p>
+
+                    <p>
+                        <b>
+                            <br>
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" data-control-title="Config" data-theme="d" id="config_page">
+    <div data-role="panel" id="panel3" data-position="left" data-display="reveal"
+         data-theme="a">
+        <ul data-role="listview" data-divider-theme="h" data-inset="false">
+            <li data-role="list-divider" role="heading">
+                Controls
+            </li>
+            <li data-theme="a">
+                <a href="#home_page" data-transition="none">
+                    Home
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#help_page" data-transition="none">
+                    Help
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <a data-role="button" href="#home_page" data-icon="home" data-iconpos="notext"
+           class="ui-btn-right">
+        </a>
+        <a data-role="button" href="#panel3" data-icon="bars" data-iconpos="notext"
+           class="ui-btn-left">
+        </a>
+
+        <h3>
+            Config
+        </h3>
+    </div>
+    <div data-role="content" style="padding: 2%">
+        <div data-role="collapsible-set">
+            <div data-role="collapsible" data-collapsed="false">
+                <h3>
+                    Personal Info
+                </h3>
+
+                <form id="usersettings" action="" method="POST">
+                    <div data-controltype="textblock">
+                        Anonymous questionnaires will NOT send this information.
+                    </div>
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="fullname">
+                            Full name
+                        </label>
+                        <input name="fullname" id="fullname" placeholder="" value="" type="text"
+                               data-mini="true">
+                    </div>
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="mobilenumber">
+                            Phone Number
+                        </label>
+                        <input name="mobilenumber" id="mobilenumber" placeholder="" value="" type="tel"
+                               data-mini="true">
+                    </div>
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="email">
+                            Email
+                        </label>
+                        <input name="email" id="email" placeholder="" value="" type="email" data-mini="true">
+                    </div>
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="location">
+                            Location
+                        </label>
+                        <input name="" id="location" placeholder="" value="" type="text">
+                    </div>
+                    <input type="submit" data-icon="plus" data-iconpos="left" value="Store Personal Details"
+                           data-mini="true" onclick="javascript:dbGoUser()">
+                </form>
+            </div>
+            <div data-role="collapsible">
+                <h3>
+                    Advanced
+                </h3>
+
+                <form id="serversettings" action="" method="POST">
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="server">
+                            Posting Server
+                        </label>
+                        <input name="server" id="server" placeholder="" value="" type="text" data-mini="true">
+                    </div>
+                    <input type="submit" data-icon="plus" data-iconpos="left" value="Confirm Posting Server"
+                           data-mini="true" onclick="javascript:dbGoServer()">
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<!-- Render the manifest -->
+
+<!-- TODO Build in detection that server is defined -->
+<script type="text/javascript">
+
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $.getJSON('http://mobileapps.moledesign.biz/myquestions/server/datastore/manifest.json', function (data) {
+            var template = '<div data-role="fieldcontain" data-controltype="selectmenu">';
+            template += '{{#myQuestions}}';
+            template += '<label for="questionchoice" class="ui-select">Choose:</label>';
+            template += '<select id="questionchoice" name="Select List" data-mini="true" data-native-menu="false">';
+            template += '{{#questionaires}}';
+            template += '<option value="{{id}}">{{name}}</option>';
+            template += '{{/questionaires}}';
+            template += '</select>';
+            template += '{{/myQuestions}}';
+            template += '</div>';
+            template += '<input type="button" data-icon="plus" data-iconpos="left" value="Access Questionaire" data-mini="true" onclick="javascript:dbGoQuestion()">';
+            var html = Mustache.to_html(template, data);
+            $('#home_page_content').prepend(html).trigger('create');
+        }); //getJSON
+
+    }); //function
+
+</script>
+
+</html>

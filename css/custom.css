@@ -1,0 +1,12 @@
+.maxwidth {
+    width:95% !important;
+}
+
+#question_page_content {
+    width:100% !important;
+}
+
+#questionaire {
+    width:100%;
+    min-height:200px;
+}

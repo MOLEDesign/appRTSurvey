@@ -1,0 +1,109 @@
+{
+	"id"			: "annualawards",
+	"name"			: "FGW Excellence Awards 2013",
+	"startdate" 	: "26/09/2013",
+	"enddate"		: "01/11/2013",
+	"logo"			: "",
+	"header"		: "",
+    "organiser"     : "Morgan",
+	"emailto"		: "morgan@moledesign.biz",
+	"host"			: "",
+	"username"		: "",
+	"password"		: "",
+	"description"	: "Please tell us about a colleague or team that has done something to stand out by making a difference or going above and beyond the call of duty.",
+	"questions" :
+	[
+
+        {
+            "qid" 		: "nominee_name",
+            "qname"		: "(1 of 5) Nominee Name",
+            "string"	: true,
+            "hint"		: "",
+            "maxlength"	: "100",
+            "rows"		: "",
+            "required"	: "yes",
+            "error"		: "This is optional"
+        },
+        {
+            "qid" 		: "nominee_team",
+            "qname"		: "(2 of 5) Nominee Team / Title",
+            "string"	: true,
+            "hint"		: "",
+            "maxlength"	: "100",
+            "rows"		: "",
+            "required"	: "yes",
+            "error"		: "This is optional"
+        },
+        {
+            "qid" 		: "nominee_location",
+            "qname"		: "(3 of 5) Nominee Location",
+            "string"	: true,
+            "selectmenu"	: false,
+            "hint"		: "",
+            "maxlength"	: "100",
+            "rows"		: "",
+            "required"	: "yes",
+            "error"		: "This is optional"
+        },
+
+		{
+			"qid" 		: "category",
+			"qname"		: "(4 of 5) Nomination Category",
+			"selectmenu"	: true,
+			"hint"		: "Please choose one of the following options",
+			"required"	: "no",
+			"error"		: "Please select at least one or more of the options",
+			"optionsls"	: [
+				{
+					"optiontext"	: "Outstanding personal contribution",
+					"optionvalue"	: "Outstanding personal contribution",
+					"checked"		: false
+				},
+				{
+					"optiontext"	: "Excellence in Customer Service",
+					"optionvalue"	: "Excellence in Customer Service",
+					"checked"		: false
+				},
+				{
+					"optiontext"	: "Improvements in Safety",
+					"optionvalue"	: "Improvements in Safety",
+					"checked"		: false
+				},
+				{
+					"optiontext"	: "Environmental Excellence",
+					"optionvalue"	: "Environmental Excellence",
+					"checked"		: false
+				},
+				{
+					"optiontext"	: "Inspirational Leadership",
+					"optionvalue"	: "Inspirational Leadership",
+					"checked"		: false
+				},
+                {
+                    "optiontext"	: "Other",
+                    "optionvalue"	: "Other",
+                    "checked"		: false
+                }
+			]
+		},
+		{
+			"qid" 		: "nomination_detail",
+			"qname"		: "(5 of 5) Any other feedback?",
+			"textarea"	: true,
+			"hint"		: "",
+			"maxlength"	: "300",
+			"rows"		: "4",
+			"required"	: "no",
+			"error"		: "This is optional"
+		},
+        {
+            "qid" 		: "submitform",
+            "qname"		: "Submit answers?",
+            "submit"	: true,
+            "hint"		: "",
+            "required"	: "no",
+            "error"		: "This is optional"
+        }
+
+	]
+}

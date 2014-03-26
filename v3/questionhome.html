@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>myQuestions</title>
+
+    <link href="../css/codiqa.ext.min.css" rel="stylesheet">
+    <link href="../css/jquery.mobile.theme-1.3.1.min.css" rel="stylesheet">
+    <link href="../css/robot.css" rel="stylesheet">
+    <link href="../css/jquery.mobile.structure-1.3.1.min.css" rel="stylesheet">
+
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/jquery.mobile-1.3.1.min.js"></script>
+    <script src="../js/codiqa.ext.min.js"></script>
+    <script src="../js/jquery.cycle.all.min.js"></script>
+    <!-- Call mustache.js -->
+    <script src="../js/mustache.js"></script>
+
+    <!-- Local storage -->
+    <script src="../js/storage.js"></script>
+
+    <!-- Styling for smaller screens -->
+    <link type="text/css" href="../css/smallscreen.css" rel="stylesheet" media="all and (max-height: 480px)"/>
+
+    <!-- Custom styling -->
+    <link href="../css/custom.css" rel="stylesheet">
+
+    <!-- Posting scripts -->
+    <script src="../js/post.js"></script>
+
+
+</head>
+<body>
+<div data-role="page" data-control-title="Question Home" data-theme="d"
+     id="question_home">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <a data-role="button" data-icon="home" data-iconpos="notext"
+           class="ui-btn-left" href="index.html">
+        </a>
+
+        <h3>
+            Questionaire
+        </h3>
+    </div>
+    <div data-role="content" style="padding: 2%">
+        <div data-controltype="textblock">
+            <p>
+                <b>
+                    Questionaire Info
+                </b>
+            </p>
+        </div>
+        <a data-role="button" href="#quesionaire_page">
+            Questionaire
+        </a>
+        <a data-role="button" href="#ask_question">
+            Ask a Question
+        </a>
+        <a data-role="button" href="#home_page" data-icon="home" data-iconpos="left">
+            Back to Selection Screen
+        </a>
+    </div>
+</div>
+<div data-role="page" data-control-title="Questionaire" data-theme="d"
+     id="quesionaire_page">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <a data-role="button" href="#question_home" data-icon="arrow-l" data-iconpos="left"
+           class="ui-btn-left">
+            Exit
+        </a>
+
+        <h3>
+            Questionaire
+        </h3>
+    </div>
+    <div data-role="content" style="padding: 2%">
+
+        <form id="questionaire" style="height:100px;">
+            <div id="question_page_content">
+            </div>
+
+        </form>
+        <a data-role="button" data-inline="true" href="#" data-icon="arrow-l" data-iconpos="notext" id="prev_btn">
+        </a>
+        <a data-role="button" data-inline="true" href="#" data-icon="arrow-r" data-iconpos="notext" id="next_btn">
+        </a>
+    </div>
+</div>
+<div data-role="page" data-control-title="Ask a Question" data-theme="d"
+     id="ask_question">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <a data-role="button" href="#ask_question" data-icon="arrow-l" data-iconpos="left"
+           class="ui-btn-left">
+            Back
+        </a>
+
+        <h3>
+            Ask a Question
+        </h3>
+    </div>
+    <div data-role="content" style="padding: 2%">
+        <form id="askquestion" action="">
+            <div data-role="fieldcontain" data-controltype="toggleswitch">
+                <label for="toggleswitch1">
+                    Remain Annonymous
+                </label>
+                <select name="toggleswitch1" id="toggleswitch1" data-theme="" data-role="slider"
+                        data-mini="true">
+                    <option value="off">
+                        No
+                    </option>
+                    <option value="on">
+                        Yes
+                    </option>
+                </select>
+            </div>
+
+
+            <input type="submit" value="Ask your question" data-mini="true">
+        </form>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+
+$(function () {
+
+    $.getJSON('http://mobileapps.moledesign.biz/myquestions/server/datastore/' + db_question.getItem('questionchoice') + '.json', function (data) {
+        var template = '{{#questions}}';
+        // Basic String
+        template += '{{#string}}';
+        template += '<div data-role="fieldcontain" data-controltype="textinput" class="maxwidth">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	type="text" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'length="{{length}}" ';
+        template += 'data-mini="true" ';
+        template += 'maxlength="{{maxlength}}"';
+        template += ' />';
+        template += '</div>';
+        template += '{{/string}}';
+        // End basic String
+
+        // Email String
+        template += '{{#email}}';
+        template += '<div data-role="fieldcontain" data-controltype="textinput" class="maxwidth">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	type="email" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'length="{{length}}" ';
+        template += 'data-mini="true" ';
+        template += 'maxlength="{{maxlength}}"';
+        template += ' />';
+        template += '</div>';
+        template += '{{/email}}';
+        // End email String
+
+        // Number String
+        template += '{{#number}}';
+        template += '<div data-role="fieldcontain" data-controltype="textinput" class="maxwidth">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	type="number" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'length="{{length}}" ';
+        template += 'data-mini="true" ';
+        template += 'maxlength="{{maxlength}}"';
+        template += ' />';
+        template += '</div>';
+        template += '{{/number}}';
+        // End email number
+
+        // Telephone String String
+        template += '{{#tel}}';
+        template += '<div data-role="fieldcontain" data-controltype="textinput" class="maxwidth">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	type="tel" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'length="{{length}}" ';
+        template += 'data-mini="true" ';
+        template += 'maxlength="{{maxlength}}"';
+        template += ' />';
+        template += '</div>';
+        template += '{{/tel}}';
+        // End telephone number
+
+        // Date Date
+        template += '{{#date}}';
+        template += '<div data-role="fieldcontain" data-controltype="dateinput">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	type="date" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'type="date" ';
+        template += 'data-mini="true" ';
+        template += ' />';
+        template += '</div>';
+        template += '{{/date}}';
+        // End date
+
+
+        // Time
+        template += '{{#time}}';
+        template += '<div data-role="fieldcontain" data-controltype="textinput">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	type="time" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'data-mini="true" ';
+        template += ' />';
+        template += '</div>';
+        template += '{{/time}}';
+        // End time
+
+
+        // Colour
+        template += '{{#colour}}';
+        template += '<div data-role="fieldcontain" data-controltype="textinput">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	type="color" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'data-mini="true" ';
+        template += ' />';
+        template += '</div>';
+        template += '{{/colour}}';
+        // End colour
+
+
+        // YesNo
+        template += '{{#yesno}}';
+        template += '<div data-role="fieldcontain" data-controltype="toggleswitch">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<select ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'data-mini="true" ';
+        template += 'data-role="slider" ';
+        template += '>';
+        template += '<option value="off">Off</option>';
+        template += '<option value="on">On</option>';
+        template += '</select>';
+        template += '</div>';
+        template += '{{/yesno}}';
+        // End colour
+
+        // Radio
+        template += '{{#radio}}';
+        template += '<div id="{{qid}}" data-role="fieldcontain" data-controltype="radiobuttons" class="maxwidth">';
+        template += '<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">';
+        template += '<legend>{{qname}}</legend>';
+        template += '{{#optionsls}}';
+        template += '<label for="{{optionvalue}}">{{optiontext}}</label>';
+        template += '<input	type="radio" ';
+        template += 'name ="{{optionvalue}}" ';
+        template += 'id="{{optionvalue}}" ';
+        template += 'required="{{required}}" ';
+        template += ' />';
+        template += '{{/optionsls}}';
+        template += '</fieldset>';
+        template += '</div>';
+        template += '{{/radio}}';
+
+
+        // Select Menu
+        template += '{{#selectmenu}}';
+        template += '<div data-role="fieldcontain" data-controltype="selectmenu" class="maxwidth">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<select ';
+        template += 'name="{{qname}}" ';
+        template += 'id="{{qid}}"';
+        template += 'data-mini="true" ';
+        template += 'data-role="selectmenu" ';
+        template += '>';
+        template += '{{#optionsls}}';
+        template += '<option value="{{optionvalue}}">{{optiontext}}</option>';
+        template += '{{/optionsls}}';
+        template += '</select>';
+        template += '</div>';
+        template += '{{/selectmenu}}';
+        // End Select Menu
+
+        // Text area
+        template += '{{#textarea}}';
+        template += '<div data-role="fieldcontain" data-controltype="textarea" class="maxwidth">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<textarea ';
+        template += 'name="{{qname}}" ';
+        template += 'id="{{qid}}"';
+        template += 'data-mini="true" ';
+        template += '></textarea>';
+        template += '</div>';
+        template += '{{/textarea}}';
+        // End text area
+
+
+        // Camera
+        template += '{{#camera}}';
+        template += '<div data-role="fieldcontain">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'accept="image/*" ';
+        template += 'capture="camera" ';
+        template += 'data-mini="true" ';
+        template += ' />';
+        template += '</div>';
+        template += '{{/camera}}';
+        // End camera
+
+        // File
+        template += '{{#file}}';
+        template += '<div data-role="fieldcontain">';
+        template += '<label for="{{qid}}">{{qname}}</label>';
+        template += '<input	type="file" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
+        template += 'required="{{required}}" ';
+        template += 'data-mini="true" ';
+        template += ' />';
+        template += '</div>';
+        template += '{{/file}}';
+        // End File
+
+        // Checkboxes
+        template += '{{#checkbox}}';
+        template += '<div id="{{qid}}" data-role="fieldcontain" data-controltype="checkboxes">';
+        template += '<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">';
+        template += '<legend>{{qname}}</legend>';
+        template += '{{#optionsls}}';
+        template += '<label for="{{optionvalue}}">{{optiontext}}</label>';
+        template += '<input	type="checkbox" ';
+        template += 'name ="{{optionvalue}}" ';
+        template += 'id="{{optionvalue}}" ';
+        template += 'required="{{required}}" ';
+        template += ' />';
+        template += '{{/optionsls}}';
+        template += '</fieldset>';
+        template += '</div>';
+        template += '{{/checkbox}}';
+        // End Boxes
+
+        // Submit
+        template += '{{#submit}}';
+        template += '<div data-role="fieldcontain" data-controltype="textinput" class="maxwidth">';
+        template += '<input name="{{qid}}"';
+        template += 'type="submit"';
+        template += 'value="{{qname}}"';
+        template += 'onclick="questionSubmit()"';
+        template += 'data-mini="true"/></div>';
+        template += '{{/submit}}	';
+        // end submit
+
+        template += '{{/questions}}';
+        var html = Mustache.to_html(template, data);
+
+
+        $('#question_page_content').prepend(html).trigger('create');
+
+        $('#question_page_content').cycle({
+            fx: 'fade',
+            pause: 1,
+            next: '#next_btn',
+            prev: '#prev_btn',
+            speed: 500,
+            timeout: 0
+        });
+
+
+
+    }); //getJSON
+
+}); //function
+
+</script>
+
+</html>

@@ -1,0 +1,130 @@
+').addEvent('mouseover',function() {
+		document.id('product_list').addClass('show_products');
+	});
+	document.id('vmCartModule').addEvent('mouseout',function() {
+		document.id('product_list').removeClass('show_products');
+	});
+	document.id('product_list').addEvent('mouseover',function() {
+		document.id('product_list').addClass('show_products');
+	});
+	document.id('product_list').addEvent('mouseout',function() {
+		document.id('product_list').removeClass('show_products');
+	});
+	});
+function remove_product_cart(elm) {
+	var cart_id=elm.getChildren('span').get('text');
+	if(document.id('is_opc')) {
+	    remove_product(elm.getChildren('span').get('text'));
+	} else {
+	new Request.HTML({
+		'url':'index.php?option=com_virtuemart&view=cart&task=delete',
+		'method':'post',
+		'data':'cart_virtuemart_product_id='+cart_id,
+		'evalScripts':false,
+		'onSuccess':function(tree,elms,html,js) {
+			//jQuery(".vmCartModule").productUpdate();
+			mod=jQuery(".vmCartModule");
+			jQuery.getJSON(vmSiteurl+"index.php?option=com_virtuemart&nosef=1&view=cart&task=viewJS&format=json"+vmLang,
+				function(datas, textStatus) {
+					if (datas.totalProduct >0) {
+						mod.find(".vm_cart_products").html("");
+						jQuery.each(datas.products, function(key, val) {
+							jQuery("#hiddencontainer .container").clone().appendTo(".vmCartModule .vm_cart_products");
+							jQuery.each(val, function(key, val) {
+								if (jQuery("#hiddencontainer .container ."+key)) mod.find(".vm_cart_products ."+key+":last").html(val) ;
+							});
+						});
+						mod.find(".total").html(datas.billTotal);
+						mod.find(".show_cart").html(datas.cart_show);
+					} else {
+						mod.find(".vm_cart_products").html("");
+						mod.find(".show_cart").html("");
+						mod.find(".total").html("Cart empty");
+						//mod.find(".total").html(datas.billTotal);
+					}
+					mod.find(".total_products").html(datas.totalProductTxt);
+				}
+			);
+		}
+	}).send();
+	}
+}
+</script>
+<style type="text/css">
+.show_products{
+	display:block !important;
+	position: absolute;
+	z-index: 100000;
+	background: url("/modules/mod_vm2cart/cartpop.png") no-repeat left top transparent;
+	width: 300px;
+	min-height: 20px;
+}
+.vm_cart_products{
+background: url("/modules/mod_vm2cart/bgc.png") repeat-y left top transparent;
+    margin-top: 20px;
+    width: 336px;
+    font-size: 90%;
+    padding-left: 15px;
+    text-align: left;
+}
+#vmCartModule{
+    cursor: pointer;    
+    float: right;
+    width: 300px;
+}
+#vmCartModule .show_products{
+right:25px;
+width:336px;
+}
+#vmCartModule .total, #vmCartModule .image {
+    float:right;
+}
+#vmCartModule .container{ 
+width:300px; 
+}
+#vmCartModule .product_row  {
+min-height: 70px;
+text-align: left;  
+width:336px; 
+}
+#vmCartModule .image img {
+    border: 1px solid #ccc;
+    text-align:center;
+    height:60px;     
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+#vmCartModule .prices  {
+      float: right;
+    padding: 0 10px;
+    color: #000; 
+}
+#vmCartModule .show_cart{
+    background:  url("/modules/mod_vm2cart/botct.png") no-repeat left top transparent;
+    border-top: 0 none;
+    font-size: 13px;
+    padding-right: 10px;
+    width: 336px;
+    height:52px;
+}
+#vmCartModule .show_cart a {
+    float: left;
+    padding-left: 36px;
+    padding-top: 11px;
+    line-height:normal;
+}
+#vmCartModule a:hover {
+color: #000;   
+}
+#vmCartModule .floatright{
+    text-align:center !important;
+    float:none;
+}
+</style>
+<a name="cart"></a>
+<div class="vmCartModule" id="vmCartModule">
+	<div class="total" style="display:inline;" id="total">
+	Winkelwagen leeg	</div>
+	<div style="clear:both"></div>
+	<div id="hiddencontainer" style="display:none">
+		<div class="container">
+			<!--
