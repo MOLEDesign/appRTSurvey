@@ -48,7 +48,7 @@ function dbGoUser() {
         this.reset();
     });
     alert('Information stored');
-    window.location = "../index.html";
+    window.location = "index.html";
     locations.reload();
 
 }
@@ -63,7 +63,7 @@ function dbGoServer() {
         this.reset();
     });
     alert('Server stored');
-    window.location = "../index.html";
+    window.location = "index.html";
     locations.reload();
 }
 

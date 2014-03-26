@@ -294,7 +294,7 @@
 
     $(function () {
         $.ajaxSetup({ cache: false });
-        $.getJSON('http://apps.gwtrains.co.uk/rtsurvey/server/datastore/manifest.json', function (data) {
+        $.getJSON('http://mobileapps.moledesign.biz/myquestions/server/datastore/manifest.json', function (data) {
             var template = '<div data-role="fieldcontain" data-controltype="selectmenu">';
             template += '{{#myQuestions}}';
             template += '<select id="questionchoice" name="Select List" data-mini="true" data-native-menu="false">';
