@@ -38,7 +38,7 @@ $mail->SetFrom('myquestions@moledesign.biz', 'myQuestions');
 $mail->AddReplyTo('morgan@moledesign.biz','Morgan Leecy');
 
 //Set who the message is to be sent to
-$mail->AddAddress('morgan@moledesign.biz', 'Morgan Leecy');
+$mail->AddAddress('morgan@moledesign.net', 'Morgan Leecy');
 
 //Set the subject line
 $mail->Subject = $nominee_name.' / '.$category. ' (Voted by '. $fullname .')';
