@@ -41,7 +41,7 @@ $mail->AddReplyTo('morgan@moledesign.biz','Morgan Leecy');
 $mail->AddAddress('morgan@moledesign.net', 'Morgan Leecy');
 
 //Set the subject line
-$mail->Subject = $nominee_name.' / '.$category. ' (Voted by '. $fullname .')';
+$mail->Subject = $fullname.' sent in their survey results';
 
 //Replace the plain text body with one created manually
 

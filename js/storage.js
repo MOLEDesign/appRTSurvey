@@ -72,7 +72,7 @@ function dbGoQuestion() {
     var f = element('questionsettings');
     db_question.setItem('questionchoice', f.elements['questionchoice'].value);
     console.log('Questionaire Set');
-    window.location = "../questionhome.html";
+    window.location = "questionhome.html";
 }
 
 /* Check server is set, if not set to default */
