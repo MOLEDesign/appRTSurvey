@@ -48,7 +48,7 @@ function dbGoUser() {
         this.reset();
     });
     alert('Information stored');
-    window.location = "index.html";
+    window.location = "../index.html";
     locations.reload();
 
 }
@@ -63,7 +63,7 @@ function dbGoServer() {
         this.reset();
     });
     alert('Server stored');
-    window.location = "index.html";
+    window.location = "../index.html";
     locations.reload();
 }
 
@@ -72,7 +72,7 @@ function dbGoQuestion() {
     var f = element('questionsettings');
     db_question.setItem('questionchoice', f.elements['questionchoice'].value);
     console.log('Questionaire Set');
-    window.location = "questionhome.html";
+    window.location = "../questionhome.html";
 }
 
 /* Check server is set, if not set to default */

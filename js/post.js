@@ -1,6 +1,6 @@
 function questionSubmit() {
 
-    var url = "http://mobileapps.moledesign.biz/myquestions/server/post.php"; // the script where you handle the form input.
+    var url = "http://apps.gwtrains.co.uk/rtsurvey/server/post.php"; // the script where you handle the form input.
 
     var data = $('#questionaire').serializeArray();
     data.push(
@@ -16,7 +16,7 @@ function questionSubmit() {
         success: function(data)
         {
             alert('Your question has been submitted. Thank you'); // show response from the php script.
-            window.location = "index.html";
+            window.location = "../index.html";
         },
         error: function(){
             alert('There was an error recording your question. Please check signal strength and try again');
@@ -29,7 +29,7 @@ function questionSubmit() {
 
 function askSubmit() {
 
-    var url = "http://10.234.100.65/myquestions/server/post_ask.php"; // the script where you handle the form input.
+    var url = "http://apps.gwtrains.co.uk/rtsurvey/server/post_ask.php"; // the script where you handle the form input.
 
     var f = element('postask');
 
@@ -48,7 +48,7 @@ function askSubmit() {
         success: function(data)
         {
             alert('Your question has been submitted. Thank you'); // show response from the php script.
-            window.location = "index.html";
+            window.location = "../index.html";
         },
         error: function(){
             alert('There was an error recording your question. Please check signal strength and try again');
