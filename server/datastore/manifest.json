@@ -1,24 +1,16 @@
 {
 	"myQuestions" : 
 	{
-		"lastupdate" 	: "18/09/2013",
+		"lastupdate" 	: "30/03/2014",
 		"questionaires" : 
 		[
-			{
-				"id" 		: "test001",
-				"name"		: "Test 001",
-				"detail"	: "This is a test questionnaire with absolutely no value whatsoever",
-				"startdate"	: "04/04/2013",
-				"enddate"	: "30/12/2013",
-				"filename"	: "test001.json"
-			},
             {
-                "id" 		: "annualawards2013",
-                "name"		: "2013 Annual Awards",
+                "id" 		: "managerconf2014",
+                "name"		: "2014 Manager Conference",
                 "detail"	: "Vote for your peers and managers in thhe 2013 awards",
-                "startdate"	: "26/09/2013",
-                "enddate"	: "01/11/2013",
-                "filename"	: "annualawards2013.json"
+                "startdate"	: "01/04/2014",
+                "enddate"	: "21/04/2014",
+                "filename"	: "annualawards2014.json"
             }
 		]
 	}
