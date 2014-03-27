@@ -77,5 +77,5 @@ function dbGoQuestion() {
 
 /* Check server is set, if not set to default */
 if (!db_server.getItem('server')) {
-    db_server.setItem('server', 'http://10.234.100.65/myquestions/datastore/');
+    db_server.setItem('server', 'http://apps.gwtrains.co.uk/rtsurvey');
 }
