@@ -17,6 +17,26 @@
 	"description"	: "A short set of 19 questions that will enable us to improve the managers conference. One entry at random will win an iPad mini",
 	"questions" : 
 	[
+        {
+            "qid" 		: "your_name",
+            "qname"		: "Your Full Name",
+            "string"	: true
+        },
+        {
+            "qid" 		: "your_email",
+            "qname"		: "Your Email Address",
+            "string"	: true
+        },
+        {
+            "qid" 		: "your_mobile",
+            "qname"		: "Mobile Number",
+            "string"	: true
+        },
+        {
+            "qid" 		: "your_title",
+            "qname"		: "Job Title / Position",
+            "string"	: true
+        },
 		{
 			"qid" 		: "rate_conference_exp",
 			"qname"		: "(1 of 19) Rate the conference experience overall",

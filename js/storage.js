@@ -26,11 +26,11 @@ var element = function(id) { return document.getElementById(id); }
 var errorMessage = undefined;
 
 
-/* Check if user variables have been entered */
+/* Check if user variables have been entered
 if (!db_user.getItem('fullname') || !db_user.getItem('mobilenumber') || !db_user.getItem('email')){
     // variable is undefined so alert and force action
     alert('Please enter your personal details before using this Applications');
-}
+} */
 
 function dbGoUser() {
     if(errorMessage) return;
