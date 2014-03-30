@@ -1,0 +1,238 @@
+{
+	"id"			: "test001",
+	"name"			: "Test Questions 001",
+	"startdate" 	: "01/06/2013",
+	"enddate"		: "30/07/2013",
+	"logo"			: "",
+	"header"		: "",
+	"emailto"		: "",
+	"host"			: "",
+    "table"         : "",
+	"username"		: "",
+	"password"		: "",
+	"description"	: "A short set questions fors testing the myquestions system",
+	"questions"     :
+	[
+
+        {
+            "qid" 		: "string",
+            "qname"		: "(1 of 14) Basic String",
+            "string"	: true,
+            "hint"		: "Please enter a string",
+            "maxlength"	: "100",
+            "required"	: "no",
+            "error"		: "You must enter a string for question 1"
+        },
+        {
+            "qid" 		: "email",
+            "qname"		: "(2 of 14) Basic Email",
+            "email"     : true,
+            "hint"		: "Please enter a valid email address",
+            "maxlength"	: "100",
+            "required"	: "no",
+            "error"		: "An email address is required for question 2"
+        },
+        {
+            "qid" 		: "number",
+            "qname"		: "(3 of 14) Basic Number",
+            "number"	: true,
+            "hint"		: "Please enter a number",
+            "maxlength"	: "100",
+            "required"	: "no",
+            "error"		: "A number is required for question 3"
+        },
+        {
+            "qid" 		: "tel",
+            "qname"		: "(4 of 14) Basic telephone",
+            "tel"       : true,
+            "hint"		: "Please enter a telephone number",
+            "maxlength"	: "50",
+            "required"	: "no",
+            "error"		: "A telephone number is required"
+        },
+        {
+            "qid" 		: "date",
+            "qname"		: "(5 of 14) Basic date",
+            "date"      : true,
+            "hint"		: "Please select a date",
+            "maxlength"	: "50",
+            "required"	: "no",
+            "error"		: "A date must be chosen"
+        },
+        {
+            "qid" 		: "time",
+            "qname"		: "(6 of 14) Basic time",
+            "time"      : true,
+            "hint"		: "Please select a time",
+            "maxlength"	: "50",
+            "required"	: "no",
+            "error"		: "A time must be selected"
+        },
+        {
+            "qid" 		: "color",
+            "qname"		: "(7 of 14) Basic Colour",
+            "colour"    : true,
+            "hint"		: "Please choose a colour",
+            "required"	: "no",
+            "error"		: "A colour must be chosen"
+        },
+        {
+            "qid" 		: "yesno",
+            "qname"		: "(8 of 15) Basic Switch",
+            "yesno"		: true,
+            "hint"		: "Please chose an options",
+            "maxlength"	: "10",
+            "required"	: "no",
+            "error"		: "An option must be chosen"
+        },
+		{
+			"qid" 		: "text_area",
+			"qname"		: "(11 of 15) Basic text area?",
+			"textarea"	: true,
+			"hint"		: "",
+			"maxlength"	: "300",
+			"rows"		: "4",
+			"required"	: "no",
+			"error"		: ""
+		},
+		{
+			"qid" 		: "camera",
+			"qname"		: "(12 of 15) Take a photo?",
+			"camera"	: true,
+			"hint"		: "",
+			"required"	: "no",
+			"error"		: "This is optional"
+		},
+		{
+			"qid" 		: "file",
+			"qname"		: "(13 of 15) Upload a file?",
+			"file"	    : true,
+			"checkgrp"	: false,
+			"hint"		: "",
+			"maxlength"	: "300",
+			"rows"		: "4",
+			"required"	: "no",
+			"error"		: "This is optional"
+		},
+        {
+            "qid" 		: "category",
+            "qname"		: "(10 of 15) Nomination Category",
+            "selectmenu"	: true,
+            "hint"		: "Please choose one of the following options",
+            "required"	: "no",
+            "error"		: "Please select at least one or more of the options",
+            "optionsls"	: [
+                {
+                    "optiontext"	: "Outstanding personal contribution",
+                    "optionvalue"	: "Outstanding personal contribution",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Excellence in Customer Service",
+                    "optionvalue"	: "Excellence in Customer Service",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Improvements in Safety",
+                    "optionvalue"	: "Improvements in Safety",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Environmental Excellence",
+                    "optionvalue"	: "Environmental Excellence",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Inspirational Leadership",
+                    "optionvalue"	: "Inspirational Leadership",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Other",
+                    "optionvalue"	: "Other",
+                    "checked"		: false
+                }
+            ]
+        },
+        {
+            "qid" 		: "checkboxes",
+            "qname"		: "(14 of 15) Checkboxes",
+            "checkbox"  : true,
+            "hint"		: "Please choose one of the following options",
+            "required"	: "no",
+            "error"		: "Please select at least one or more of the options",
+            "optionsls"	: [
+                {
+                    "optiontext"	: "Very Good",
+                    "optionvalue"	: "Very Good",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Good",
+                    "optionvalue"	: "Good",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Average",
+                    "optionvalue"	: "Average",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Below Average",
+                    "optionvalue"	: "Below Average",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Poor",
+                    "optionvalue"	: "Poor",
+                    "checked"		: false
+                }
+            ]
+        },
+        {
+            "qid" 		: "radio",
+            "qname"		: "(9 of 15) Basic Radio",
+            "radio"		: true,
+            "hint"		: "",
+            "required"	: "no",
+            "error"		: "This is optional",
+            "optionsls"	: [
+                {
+                    "optiontext"	: "Very Good",
+                    "optionvalue"	: "Very Good",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Good",
+                    "optionvalue"	: "Good",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Average",
+                    "optionvalue"	: "Average",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Below Average",
+                    "optionvalue"	: "Below Average",
+                    "checked"		: false
+                },
+                {
+                    "optiontext"	: "Poor",
+                    "optionvalue"	: "Poor",
+                    "checked"		: false
+                }
+            ]
+        },
+
+		{
+			"qid" 		: "submitform",
+			"qname"		: "Submit answers?",
+			"submit"	: true,
+			"hint"		: "",
+			"required"	: "no",
+			"error"		: "This is optional"
+		}
+
+	]
+}

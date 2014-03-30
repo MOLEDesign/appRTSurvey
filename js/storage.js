@@ -26,11 +26,11 @@ var element = function(id) { return document.getElementById(id); }
 var errorMessage = undefined;
 
 
-/* Check if user variables have been entered
+/* Check if user variables have been entered */
 if (!db_user.getItem('fullname') || !db_user.getItem('mobilenumber') || !db_user.getItem('email')){
     // variable is undefined so alert and force action
     alert('Please enter your personal details before using this Applications');
-} */
+}
 
 function dbGoUser() {
     if(errorMessage) return;
@@ -48,7 +48,7 @@ function dbGoUser() {
         this.reset();
     });
     alert('Information stored');
-    window.location = "index.html";
+    window.location = "../index.html";
     locations.reload();
 
 }
@@ -63,7 +63,7 @@ function dbGoServer() {
         this.reset();
     });
     alert('Server stored');
-    window.location = "index.html";
+    window.location = "../index.html";
     locations.reload();
 }
 
@@ -77,5 +77,5 @@ function dbGoQuestion() {
 
 /* Check server is set, if not set to default */
 if (!db_server.getItem('server')) {
-    db_server.setItem('server', 'http://apps.gwtrains.co.uk/rtsurvey');
+    db_server.setItem('server', 'http://10.234.100.65/myquestions/datastore/');
 }

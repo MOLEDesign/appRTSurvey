@@ -61,7 +61,7 @@
 
 $(function () {
 
-    $.getJSON('http://mobileapps.moledesign.biz/myquestions/server/datastore/' + db_question.getItem('questionchoice') + '.json', function (data) {
+    $.getJSON('http://apps.gwtrains.co.uk/rtsurvey/server/datastore/' + db_question.getItem('questionchoice') + '.json', function (data) {
         var template = '{{#questions}}';
         // Basic String
         template += '{{#string}}';
@@ -199,8 +199,8 @@ $(function () {
         template += '{{#optionsls}}';
         template += '<label for="{{optionvalue}}">{{optiontext}}</label>';
         template += '<input	type="radio" ';
-        template += 'name ="{{optionvalue}}" ';
-        template += 'id="{{optionvalue}}" ';
+        template += 'name ="{{qname}}" ';
+        template += 'id="{{qid}}" ';
         template += 'required="{{required}}" ';
         template += ' />';
         template += '{{/optionsls}}';
