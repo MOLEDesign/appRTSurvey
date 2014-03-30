@@ -26,12 +26,13 @@ $mail->IsHTML(true);
 $mail->IsSendmail();
 
 //Set who the message is to be sent from
-$mail->SetFrom('donotreply@gwtrains.co.uk', $fullname. ' (RT Surveys)');
+$mail->SetFrom('donotreply@gwtrains.co.uk', $fullname. ' (RTS)');
 
 //Set an alternative reply-to address
 $mail->AddReplyTo('vicky.cropper@firstgroup.com','Vicky Cropper');
 
 //Set who the message is to be sent to
+$mail->AddAddress('vicky.cropper@firstgroup.com', 'Vicky Cropper');
 $mail->AddAddress('morgan.leecy@firstgroup.com', 'Morgan Leecy');
 
 //Set the subject line
