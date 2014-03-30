@@ -26,7 +26,7 @@ $mail->IsHTML(true);
 $mail->IsSendmail();
 
 //Set who the message is to be sent from
-$mail->SetFrom('donotreply@gwtrains.co.uk', 'RT Surveys');
+$mail->SetFrom('donotreply@gwtrains.co.uk', $fullname. ' (RT Surveys)');
 
 //Set an alternative reply-to address
 $mail->AddReplyTo('vicky.cropper@firstgroup.com','Vicky Cropper');
@@ -39,13 +39,13 @@ $mail->Subject = $fullname.' sent in their survey results for The 2014 Managers 
 
 //Replace the plain text body with one created manually
 
-$message = '<table width="90%">';
+$message = '<table style="width:90%; border-width: 1px;">';
 
 
 foreach ($_POST as $key => $value)
-    $message .= '<tr><td width="30%">'.htmlspecialchars($key).'</td><td>'.htmlspecialchars($value).'</td></tr>';
+    $message .= '<tr><td style="width:30%; border-style:solid; border-color:#333; border-width: 1px;">'.htmlspecialchars($key).'</td><td>'.htmlspecialchars($value).'</td></tr>';
 
-$message = '</table>';
+$message .= '</table>';
 $mail->Body = $message;
 
 
