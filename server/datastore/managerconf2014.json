@@ -804,7 +804,7 @@
 		},
 		{
 			"qid" 		: "one_change",
-			"qname"		: "(22 of 23) What 1 thing would you change and/or improve about this conference?",
+			"qname"		: "(22 of 23) What one thing would you change and/or improve about this conference?",
 			"string"	: false,
 			"number"	: false,
 			"yesno"		: false,
