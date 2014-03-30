@@ -16,12 +16,6 @@ $category = 'Not declared';
 $fullname = $_POST['fullname'];
 $fullname = htmlspecialchars($fullname);
 
-$nominee_name = $_POST['nominee_name'];
-$nominee_name = htmlspecialchars($nominee_name);
-
-$category = $_POST['category'];
-$category = htmlspecialchars($category);
-
 //Create a new PHPMailer instance
 $mail = new PHPMailer();
 
@@ -32,24 +26,26 @@ $mail->IsHTML(true);
 $mail->IsSendmail();
 
 //Set who the message is to be sent from
-$mail->SetFrom('myquestions@moledesign.biz', 'myQuestions');
+$mail->SetFrom('donotreply@gwtrains.co.uk', 'RT Surveys');
 
 //Set an alternative reply-to address
-$mail->AddReplyTo('morgan@moledesign.biz','Morgan Leecy');
+$mail->AddReplyTo('vicky.cropper@firstgroup.com','Vicky Cropper');
 
 //Set who the message is to be sent to
-$mail->AddAddress('morgan@moledesign.net', 'Morgan Leecy');
+$mail->AddAddress('morgan.leecy@firstgroup.com', 'Morgan Leecy');
 
 //Set the subject line
-$mail->Subject = $fullname.' sent in their survey results';
+$mail->Subject = $fullname.' sent in their survey results for The 2014 Managers Conference';
 
 //Replace the plain text body with one created manually
 
-$message = '';
+$message = '<table width="90%">';
+
 
 foreach ($_POST as $key => $value)
-    $message .= 'Field '.htmlspecialchars($key).' = '.htmlspecialchars($value).'<br>';
+    $message .= '<tr><td width="30%">'.htmlspecialchars($key).'</td><td>'.htmlspecialchars($value).'</td></tr>';
 
+$message = '</table>';
 $mail->Body = $message;
 
 

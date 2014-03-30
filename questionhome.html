@@ -122,7 +122,7 @@
 
 $(function () {
 
-    $.getJSON('http://apps.gwtrains.co.uk/rtsurvey/server/datastore/' + db_question.getItem('questionchoice') + '.json', function (data) {
+    $.getJSON('http://www.gwtrains.co.uk/rtsurvey/server/datastore/' + db_question.getItem('questionchoice') + '.json', function (data) {
 
         var qdesc = data.description;
 
@@ -275,8 +275,8 @@ $(function () {
         template += '{{#optionsls}}';
         template += '<label for="{{optionvalue}}">{{optiontext}}</label>';
         template += '<input	type="radio" ';
-        template += 'name ="{{qname}}" ';
-        template += 'id="{{qid}}" ';
+        template += 'name ="{{optionvalue}}" ';
+        template += 'id="{{optionvalue}}" ';
         template += 'required="{{required}}" ';
         template += ' />';
         template += '{{/optionsls}}';

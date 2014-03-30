@@ -24,9 +24,9 @@
     <!-- Local storage -->
     <script src="js/storage.js"></script>
 
-    <!-- Add to home scripts -->
+    <!-- Add to home scripts
     <script src="js/add2home.js"></script>
-    <link href="css/add2home.css" rel="stylesheet">
+    <link href="css/add2home.css" rel="stylesheet"> -->
 
     <!-- Styling for smaller screens -->
     <link type="text/css" href="css/smallscreen.css" rel="stylesheet" media="all and (max-height: 360px)" />
@@ -50,18 +50,18 @@
         <a data-role="button" data-theme="a" href="javascript:window.location.reload()" data-icon="refresh"
            data-iconpos="notext" class="ui-btn-right">
         </a>
-        <a data-role="button" href="#config_page" data-icon="gear" data-iconpos="notext"
+        <!--<a data-role="button" href="#config_page" data-icon="gear" data-iconpos="notext"
            class="ui-btn-left">
-        </a>
+        </a>-->
 
         <h3>
-            myQuestions
+            RTSurvey
         </h3>
     </div>
     <div data-role="content" style="padding: 2%">
         <div data-controltype="textblock">
             <div id="welcomemessage">
-                Welcome to myQuestions. Please select a questionaire below.
+                Welcome to RT Survey Please select a questionnaire below.
             </div>
         </div>
         <div style=" text-align:center" data-controltype="image" id="frontpageimg">
@@ -294,7 +294,7 @@
 
     $(function () {
         $.ajaxSetup({ cache: false });
-        $.getJSON('http://apps.gwtrains.co.uk/rtsurvey/server/datastore/manifest.json', function (data) {
+        $.getJSON('http://www.gwtrains.co.uk/rtsurvey/server/datastore/manifest.json', function (data) {
             var template = '<div data-role="fieldcontain" data-controltype="selectmenu">';
             template += '{{#myQuestions}}';
             template += '<select id="questionchoice" name="Select List" data-mini="true" data-native-menu="false">';
