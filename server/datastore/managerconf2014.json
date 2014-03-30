@@ -79,7 +79,7 @@
 			]
 		},
 		{
-			"qid" 		: "1-rate-venue",
+			"qid" 		: "2-rate-venue",
 			"qname"		: "(2 of 19) Rate the venue",
 			"string"	: false,
 			"number"	: false,
@@ -705,7 +705,7 @@
 		},
 		{
 			"qid" 		: "18-one-change",
-			"qname"		: "(18 of 19) What one thing would you change and/or improve about this conference?",
+			"qname"		: "(18 of 19) What one thing would you change and or improve about this conference?",
 			"string"	: false,
 			"number"	: false,
 			"yesno"		: false,
