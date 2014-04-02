@@ -33,9 +33,9 @@ $mail->SetFrom($email, $fullname. ' (RTS)');
 
 //Set an alternative reply-to address
 $mail->AddReplyTo('vicky.cropper@firstgroup.com','Vicky Cropper');
-$mail->AddReplyTo('morgan.leecy@firstgroup.com','Morgan Leecy');
 
 //Set who the message is to be sent to
+$mail->AddAddress('vicky.cropper@firstgroup.com', 'Vicky Cropper');
 $mail->AddAddress('morgan@moledesign.net', 'Morgan Leecy');
 
 
@@ -48,7 +48,7 @@ $message = '<table style="width:90%; border-width: 1px;">';
 
 
 foreach ($_POST as $key => $value)
-    $message .= '<tr><td style="width:30%; border-style:solid; border-color:#333; border-width: 1px;">'.htmlspecialchars($key).'</td><td>'.htmlspecialchars($value).'</td></tr>';
+    $message .= '<tr><td width="30%" style="border-style:solid; border-color:#333; border-width: 1px;">'.htmlspecialchars($key).'</td><td style="border-style:solid; border-color:#333; border-width: 1px;">'.htmlspecialchars($value).'</td></tr>';
 
 $message .= '</table>';
 $mail->Body = $message;
