@@ -16,6 +16,9 @@ $category = 'Not declared';
 $fullname = $_POST['fullname'];
 $fullname = htmlspecialchars($fullname);
 
+$email = $_POST['email'];
+$email = htmlspecialchars($email);
+
 //Create a new PHPMailer instance
 $mail = new PHPMailer();
 
@@ -26,14 +29,15 @@ $mail->IsHTML(true);
 $mail->IsSendmail();
 
 //Set who the message is to be sent from
-$mail->SetFrom('donotreply@gwtrains.co.uk', $fullname. ' (RTS)');
+$mail->SetFrom($email, $fullname. ' (RTS)');
 
 //Set an alternative reply-to address
 $mail->AddReplyTo('vicky.cropper@firstgroup.com','Vicky Cropper');
+$mail->AddReplyTo('morgan.leecy@firstgroup.com','Morgan Leecy');
 
 //Set who the message is to be sent to
-$mail->AddAddress('vicky.cropper@firstgroup.com', 'Vicky Cropper');
-$mail->AddAddress('morgan.leecy@firstgroup.com', 'Morgan Leecy');
+$mail->AddAddress('morgan@moledesign.net', 'Morgan Leecy');
+
 
 //Set the subject line
 $mail->Subject = $fullname.' sent in their survey results for The 2014 Managers Conference';
