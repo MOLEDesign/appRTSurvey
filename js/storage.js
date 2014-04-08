@@ -39,7 +39,6 @@ function dbGoUser() {
     db_user.setItem('mobilenumber', f.elements['mobilenumber'].value);
     db_user.setItem('email', f.elements['email'].value);
     db_user.setItem('location', f.elements['location'].value);
-    console.log('Saved!');
     $("#fullname").attr("placeholder", db_user.getItem('fullname'));
     $("#mobilenumber").attr("placeholder", db_user.getItem('mobilenumber'));
     $("#email").attr("placeholder", db_user.getItem('email'));
@@ -57,7 +56,6 @@ function dbGoServer() {
     if(errorMessage) return;
     var f = element('serversettings');
     db_server.setItem('server', f.elements['server'].value);
-    console.log('Saved!');
     $("#server").attr("placeholder", db_server.getItem('server'));
     $( '#serversettings' ).each(function(){
         this.reset();
@@ -71,7 +69,6 @@ function dbGoQuestion() {
     if(errorMessage) return;
     var f = element('questionsettings');
     db_question.setItem('questionchoice', f.elements['questionchoice'].value);
-    console.log('Questionaire Set');
     window.location = "questionhome.html";
 }
 
